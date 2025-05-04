@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/* تعریف فونت IRANSans با بهینه‌سازی برای عملکرد بهتر */
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb_UltraLight.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb_Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb_Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IRANSans';
+  src: url('/fonts/IRANSansWeb_Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Base theme colors */
+  --background: linear-gradient(135deg, var(--back1), var(--back2));
+  --foreground: #171717;
+ 
+  /* AI theme accent colors based on brand color #2a3257 */
+  --ai-primary: #b3b4bc;
+  --ai-secondary: #c1c2c5;
+  --ai-tertiary: #5d85d3;
+  --ai-glow: rgba(42, 50, 87, 0.15);
+  
+  /* Subtle gradient accents */
+  --ai-gradient-soft: linear-gradient(135deg, var(--ai-primary), var(--ai-secondary));
+  --ai-gradient-vibrant: linear-gradient(135deg, var(--ai-primary), var(--ai-secondary), var(--ai-tertiary));
+  
+  /* UI Elements */
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(209, 213, 219, 0.5);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  /* Typography */
+  --font-sans: 'IRANSans', system-ui, sans-serif;
+}
+
+/* Optimized dark mode - scientific and modern style for national calendar website */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --back1: #1a1f36;
+    --back2: #1f43d2;
+    --tw-color-ai-bg-alt: #232842;
+    --tw-color-ai-text: #f1f5f9;
+    --tw-color-ai-primary: #2a3257;
+    --tw-color-ai-primary-dark: #212742;
+    --tw-color-ai-primary-light: #364069;
+    --tw-color-ai-secondary: #4f5a85;
+    --tw-color-ai-secondary-dark: #3e476a;
+    --tw-color-ai-secondary-light: #6270a3;
+    --tw-color-ai-tertiary: #5d85d3;
+    --tw-color-ai-accent: #3c7edf;
+    --tw-color-ai-accent-glow: rgba(60, 126, 223, 0.15);
+    --tw-color-ai-dark: #141829;
+    --tw-color-ai-panel: rgba(26, 31, 54, 0.9);
+    --tw-color-ai-card: rgba(35, 40, 66, 0.8);
+    --tw-color-ai-border: rgba(60, 70, 105, 0.35);
+    --tw-color-ai-highlight: rgba(93, 133, 211, 0.08);
+    --error: #e53e3e;
+    --tw-color-ai-warning: #ed8936;
+    --tw-color-ai-success: #38b2ac;
+    --tw-color-ai-info: #4299e1;
+    
+    /* Update root variables to match dark mode */
+    --background: var(--back1);
+    --foreground: var(--tw-color-ai-text);
+    --ai-primary: var(--tw-color-ai-primary);
+    --ai-secondary: var(--tw-color-ai-secondary);
+    --ai-tertiary: var(--tw-color-ai-tertiary);
+    --ai-glow: var(--tw-color-ai-accent-glow);
+    --card-bg: var(--tw-color-ai-card);
+    --card-border: var(--tw-color-ai-border);
+  }
+}
+
+/* Base styles - keeping it minimal for better performance */
+body {
+  background: var(--back1);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease; /* Smooth transition between modes */
+  background-attachment: fixed; /* Prevents gradient from scrolling for better performance */
+}
+
+/* پشتیبانی از RTL برای محتوای فارسی */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* کلاس‌های سفارشی با تمرکز بر کارایی */
+.ai-gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--ai-gradient-soft);
+  will-change: transform; /* Optimize animation performance */
+}
+
+.ai-panel {
+  background: var(--card-bg);
+  border-radius: 0.5rem;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  box-shadow: var(--card-shadow);
+}
+
+/* Modern AI UI elements */
+.ai-button {
+  background: var(--ai-gradient-soft);
+  border: none;
+  border-radius: 0.375rem;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-button:hover {
+  box-shadow: 0 0 15px var(--ai-glow);
+  transform: translateY(-1px);
+}
+
+.ai-card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.ai-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Utility for creating subtle glow effects */
+.ai-glow {
+  box-shadow: 0 0 15px var(--ai-glow);
+}
+
+/* Use CSS variables efficiently - avoid unnecessary nesting */
+.ai-border {
+  border: 1px solid var(--card-border);
+}
+
+/* Loading indicator - optimized animation */
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.ai-loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Print optimization */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .ai-gradient-text {
+    color: black !important;
+    background-image: none !important;
+  }
+  
+  .ai-panel, .ai-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: white !important;
+  }
+}
+
+
+
+.bg-ait-bg {
+  background-color: var(--ai-error);
+}
